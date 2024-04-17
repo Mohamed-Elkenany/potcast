@@ -43,8 +43,8 @@ function Header() {
         },
     ];
     return (
-        <header className='shadow-sm border-b fixed top-0 left-0 w-full bg-white'>
-            <div className='px-4 max-w-screen-xl mx-auto h-16 flex items-center'>
+        <header className='shadow-sm border-b fixed top-0 left-0 w-full bg-white z-50'>
+            <div className='px-4 max-w-screen-2xl mx-auto h-16 flex items-center'>
                 <div className='flex flex-1 items-center justify-between pr-14'>
                     <div>
                         <Link href={'/'}>
