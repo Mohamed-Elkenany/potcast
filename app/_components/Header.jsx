@@ -1,129 +1,114 @@
-"use client";
+"use client"
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useRef, useState } from 'react'
-import { CiSearch } from "react-icons/ci";
-import { AiFillCaretDown } from "react-icons/ai";
-import { usePathname } from 'next/navigation';
+import React, { useState } from 'react'
+import { IoSearchOutline } from "react-icons/io5";
+import { FaCaretDown } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
-import { AiOutlineUser } from "react-icons/ai";
-import { CiShoppingCart } from "react-icons/ci";
-import { CiMenuBurger } from "react-icons/ci";
+import { GoPerson } from "react-icons/go";
+import { BsCart2 } from "react-icons/bs";
+import { usePathname } from 'next/navigation';
 
 function Header() {
-    const inputRef = useRef();
+    const [showLanguage, setShowLanguage] = useState(false);
     const user = true;
-    const [openSeach, setOpenSeach] = useState(false);
-    const [language, setLanguage] = useState(false);
     const pathname = usePathname();
     const navLink = [
         {
             name: "Home",
-            path: "/"
+            path:"/"
         },
         {
             name: "Shop",
-            path: "/shop"
+            path:"/shop"
         },
         {
-            name: "Men",
-            path: "/men"
+            name: "Man",
+            path:"/man"
         },
         {
             name: "Women",
-            path: "/women"
+            path:"/women"
         },
         {
             name: "Combos",
-            path: "/combos"
+            path:"/combos"
         },
         {
             name: "Joggers",
-            path: "/joggers"
+            path:"/joggers"
         },
-    ];
+    ]
+    const toggleShowLanguage = () => {
+        setShowLanguage(!showLanguage);
+    }
     return (
-        <header className='shadow-sm border-b fixed top-0 left-0 w-full bg-white z-50'>
-            <div className='px-4 max-w-screen-2xl mx-auto h-16 flex items-center'>
-                <div className='flex flex-1 items-center justify-between pr-14'>
+        <header className=' bg-white w-full shadow-md border-b border-colorGrayFour py-4 fixed top-0 left-0 z-50'>
+            <div className='max-w-screen-2xl mx-auto flex items-center justify-between gap-12'>
+                <div className='flex-1 flex items-center justify-between'>
                     <div>
                         <Link href={'/'}>
-                            <Image src={'/logo/logo.png'} width={90} height={45} alt='logo' />
+                            <Image src={'/logo/Logo.png'} width={93} height={45} className='w-full object-cover object-center' />
                         </Link>
                     </div>
                     {
-                        !user &&
-                        <div className='lg:px-2'>
-                            <nav>
-                                <ul className='hidden lg:flex items-center gap-8'>
-                                    {
-                                        navLink.map((navLink, index) => (
-                                            <li key={index} className={`${pathname === navLink.path ? ' text-colorGrayOne' : 'text-colorGrayThree'} font-semibold`}>
-                                                <Link href={navLink.path}>{navLink.name}</Link>
-                                            </li>
-                                        ))
-                                    }
-                                </ul>
-                            </nav>
-                        </div>
-                    }
-                    
-                    <div className='hidden bg-colorGrayFour text-colorGrayOne md:flex items-center gap-1 py-1 px-3 rounded-lg'>
-                        <CiSearch className='text-lg' />
-                        <input type="text" placeholder='Search' className='bg-transparent outline-none placeholder:text-colorGrayTwo placeholder:text-center' />
-                    </div>
-                    <div>
-                        
-                    </div>
-                    {user && <div className='relative'>
-                        <button onClick={() => setLanguage(!language)} className='flex items-center gap-2'>
-                            <h6 className='text-xs text-colorGrayTwo select-none'>English (united States)</h6>
-                            <AiFillCaretDown className='text-xs text-colorGrayOne' />
-                        </button>
-                        <div className={`absolute ${language ? '' : '-translate-y-5 opacity-0'} rounded-lg top-10 left-1/2 -translate-x-1/2 bg-white shadow-md h- overflow-hidden duration-300`}>
-                            <ul className='flex flex-col'>
-                                <li>
-                                    <button className='text-nowrap px-4 py-2 text-colorGrayOne text-sm'>
-                                        English (united States)
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className='text-nowrap px-4 py-2 text-colorGrayOne text-sm bg-slate-100'>
-                                        English (united States)
-                                    </button>
-                                </li>
+                        user === true &&
+                        <div>
+                            <ul className='text-[22px] font-semibold text-colorGrayThree flex items-center gap-9'>
+                                {
+                                    navLink.map((nav, index) => (
+                                        <li key={index} className={`${pathname === nav.path ? 'text-colorGrayOne' : ''}`}>
+                                            <Link href={nav.path}>
+                                                {nav.name}
+                                            </Link>
+                                        </li>
+                                    ))
+                                }
                             </ul>
                         </div>
-                    </div>}
+                    }
+                    <div className=' flex items-center justify-center gap-2 border bg-colorGrayFour p-2 rounded-lg text-colorGrayTwo'>
+                        <button className='text-xl'><IoSearchOutline /></button>
+                        <input type="text" placeholder={`Search`} className='bg-transparent w-[180px] outline-none' />
+                    </div>
                 </div>
-                <div>
-                    {user ?
-                        <div className='flex items-center gap-4'>
-                            <button className='px-6 py-2 rounded-lg text-white bg-colorPink border-colorGrayTwo'>Login</button>
-                            <button className='border border-colorGrayTwo px-5 py-2 rounded-lg text-colorPink'>Sign Up</button>
+                {
+                    !user ?
+                        <div className='flex-1 flex items-center justify-end gap-16'>
+                            <div className='relative text-colorGrayTwo'>
+                                <button onClick={toggleShowLanguage} className='flex items-center gap-3'>
+                                    <p>English (united States)</p>
+                                    <FaCaretDown className='text-colorGrayOne' />
+                                </button>
+                                <div className={`absolute ${showLanguage ? 'top-10 opacity-100 visible' : ' top-0 opacity-0 invisible'} duration-300 left-0 w-full h-full z-50`}>
+                                    <ul className='flex flex-col bg-white rounded-lg shadow-lg'>
+                                        <li className='cursor-pointer p-2'><p className='w-fit mx-auto'>English (united States)</p></li>
+                                        <li className='cursor-pointer p-2 bg-slate-50 rounded-b-lg'><p className='w-fit mx-auto'>English (united States)</p></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className='flex items-center gap-6'>
+                                <button className='text-[18px] text-white font-medium text-center bg-colorPink rounded-lg px-10 py-3'>
+                                    <Link href={'/login'}>Login</Link>
+                                </button>
+                                <button className='text-[18px] text-colorPink border border-colorGrayTwo font-medium text-center rounded-lg px-8 py-3'>
+                                    <Link href={'/signUp'}>Sign Up</Link>
+                                </button>
+                            </div>
                         </div>
                         :
-                        <div className='flex items-center gap-4'>
-                            <button className='md:hidden border w-8 h-8 rounded-md bg-colorGrayFour text-colorGrayTwo flex items-center justify-center'>
-                                <CiSearch />
-                            </button>
-                            <button className='hidden border w-8 h-8 rounded-md bg-colorGrayFour text-colorGrayOne md:flex items-center justify-center'>
+                        <div className='flex items-center gap-4 text-[18px] ml-12'>
+                            <button className='p-3 rounded-lg bg-colorGrayFour'>
                                 <CiHeart />
                             </button>
-                            <button className='hidden border w-8 h-8 rounded-md bg-colorGrayFour text-colorGrayTwo md:flex items-center justify-center'>
-                                <AiOutlineUser />
+                            <button className='p-3 rounded-lg bg-colorGrayFour'>
+                                <GoPerson />
                             </button>
-                            <button className='border w-8 h-8 rounded-md bg-colorGrayFour text-colorGrayOne flex items-center justify-center'>
-                                <CiShoppingCart />
+                            <button className='p-3 rounded-lg bg-colorGrayFour'>
+                                <BsCart2 />
                             </button>
                         </div>
-                    }
-                </div>
-                <div className='ml-4'>
-                    <button className='border lg:hidden w-8 h-8 rounded-md bg-colorGrayFour text-colorGrayOne flex items-center justify-center'>
-                        <CiMenuBurger />
-                    </button>
-                </div>
+                }
             </div>
         </header>
     );

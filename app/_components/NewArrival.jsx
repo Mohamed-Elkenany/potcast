@@ -4,17 +4,18 @@ import Slider from 'react-slick';
 import { GoArrowLeft } from "react-icons/go";
 import { GoArrowRight } from "react-icons/go";
 import CateCard from './CateCard';
+import TitleComponents from './TitleComponents';
 function SampleNextArrow(props) {
   const { onClick } = props;
   return (
-    <div onClick={onClick} className='w-fit absolute top-1/2 -translate-y-1/2 -right-8 z-30 cursor-pointer text-xl text-black'><GoArrowRight/></div>
+    <div onClick={onClick} className='w-fit absolute top-1/2 -translate-y-1/2 right-0 z-30 cursor-pointer text-xl text-black'><GoArrowRight/></div>
     );
   }
   
   function SamplePrevArrow(props) {
     const { onClick } = props;
     return (
-      <div onClick={onClick} className='w-fit absolute top-1/2 -translate-y-1/2 -left-8 z-30 cursor-pointer text-xl text-black'><GoArrowLeft/></div>
+      <div onClick={onClick} className='w-fit absolute top-1/2 -translate-y-1/2 left-0 z-30 cursor-pointer text-xl text-black'><GoArrowLeft/></div>
     );
 }
 function NewArrival() {
@@ -48,18 +49,13 @@ function NewArrival() {
   ]
   return (
     <div className='relative max-w-screen-2xl mx-auto mb-[120px]'>
-      <div className='relative mb-[120px]'>
-        <div className='absolute left-0 top-1/2 -translate-y-1/2  h-2/3  w-[7px] bg-colorPink rounded-full' />
-        <h3 className="relative font-bold pl-12">
-          New Arrival
-        </h3>
-      </div>
+      <TitleComponents title={"New Arrival"} />
       <div>
-        <div className='px-16 relative'>
-          <Slider {...settings}>
+        <div>
+          <Slider {...settings} className='px-6'>
             {
               categories.map((category, index) => (
-                <CateCard key={index} category={category}/>
+                <CateCard key={index} category={category} showIconAndExplor={false} />
               ))
             }
           </Slider>

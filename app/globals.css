@@ -1,10 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+html{
+  scroll-behavior: smooth;
+}
 @layer base{
-  html{
-    scroll-behavior: smooth;
-  }
   *{
     padding: 0;
     margin: 0;
@@ -37,26 +37,55 @@
   }
   .hero .slick-dots li{
     margin: 0;
-    width: 40px;
-    height: 5px;
-    overflow: hidden;
-  }
-  .hero .slick-dots li:first-child{
-   border-top-left-radius: 20px;
-   border-bottom-left-radius: 20px;
+    width: 50px;
+    height: 10px;
   }
   .hero .slick-dots li:last-child{
-    border-top-right-radius: 20px;
-   border-bottom-right-radius: 20px;
+   border-top-right-radius: 100px;
+   border-bottom-right-radius: 100px;
+   overflow: hidden;
+  }
+  .hero .slick-dots li:first-child{
+   border-top-left-radius: 100px;
+   border-bottom-left-radius: 100px;
+   overflow: hidden;
   }
   .hero .slick-dots li button{
-    width: 100%;
-    height: 100%;
+    width: 50px;
+    height: 10px;
   }
   .hero .slick-dots li button:before{
-    content: '';
+    font-size: 0;
     width: 100%;
     height: 100%;
-    background:rgb(138 51 253);
+    background-color: #000;
+  }
+  .hero .slick-dots li.slick-active button:before{
+    color: white;
+    background-color: #000;
+  }
+  .feedback .slick-dots {
+    bottom: -40px;
+  }
+  .feedback .slick-dots li {
+    margin: 5px;
+    width: 10px;
+    height: 10px;
+  }
+  .feedback .slick-dots li button {
+    padding: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+  }
+  .feedback .slick-dots li button:before {
+    border-radius: 100%;
+    font-size: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #BEBCBD;
+  }
+  .feedback .slick-dots li.slick-active button:before {
+    background-color: #3C4242;
   }
 }

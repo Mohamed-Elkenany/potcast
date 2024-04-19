@@ -8,14 +8,14 @@ import { BsChevronLeft } from "react-icons/bs";
 function SampleNextArrow(props) {
   const { onClick } = props;
   return (
-    <div onClick={onClick} className='hero w-fit absolute top-1/2 -translate-y-1/2 -right-7 bg-black bg-opacity-20 z-30 cursor-pointer text-5xl text-white rounded-full p-2'><BsChevronRight/></div>
+    <div onClick={onClick} className='hero w-fit absolute top-1/2 -translate-y-1/2 right-0 bg-black bg-opacity-20 z-30 cursor-pointer text-5xl text-white rounded-full p-2'><BsChevronRight/></div>
     );
   }
   
   function SamplePrevArrow(props) {
     const { onClick } = props;
     return (
-      <div onClick={onClick} className='w-fit absolute top-1/2 -translate-y-1/2 -left-7 bg-black bg-opacity-20 z-30 cursor-pointer text-5xl text-white rounded-full p-2'><BsChevronLeft/></div>
+      <div onClick={onClick} className='w-fit absolute top-1/2 -translate-y-1/2 left-0 bg-black bg-opacity-20 z-30 cursor-pointer text-5xl text-white rounded-full p-2'><BsChevronLeft/></div>
     );
 }
   
@@ -31,7 +31,7 @@ function Hero() {
     prevArrow: <SamplePrevArrow />
   };
   return (
-    <div className='hero pt-20 max-w-screen-2xl mx-auto rounded-lg'>
+    <div className='hero max-w-screen-2xl mx-auto rounded-lg'>
       <div>
         <Slider {...settings}>
           <div className=' relative rounded-2xl overflow-hidden'>
