@@ -10,7 +10,10 @@ html {
 }
 
 @layer utilities {
-  
+  .link-isActive {
+    @apply bg-gradient-to-r from-white-6 rounded-r-lg 
+    before:absolute before:right-0 before:top-0 before:h-full before:w-1 before:rounded-l before:bg-orange-1;
+  }
 }
 @layer components {
   .auth-page {

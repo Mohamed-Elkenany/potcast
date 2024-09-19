@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 const LeftSidebar = () => {
   const pathname = usePathname();
   return (
-    <div className="sticky top-0 left-0 min-h-full flex flex-col gap-y-12 pt-[30px] col-span-2">
+    <div className="sticky top-0 left-0 min-h-full flex flex-col gap-y-12 pt-[30px] col-span-2 bg-black-1">
       <div className="px-7">
         <Link href={"/"} className="flex items-center gap-x-1">
           <Image src={"/icons/logo.svg"} width={23} height={23} alt="logo" />
@@ -17,16 +17,15 @@ const LeftSidebar = () => {
       </div>
       <div>
         <nav>
-          <ul className="flex flex-col gap-y-6">
+          <ul className="flex flex-col gap-y-4">
             {navLinks.map((nav, i) => {
               const isActive: boolean = pathname === nav.path;
               return (
                 <li
                   key={i}
-                  className={`${
-                    isActive &&
-                    "border-r-4 bg-gradient-to-r from-white-6 rounded-r-lg"
-                  } px-8 py-1 border-orange-1`}
+                  className={`relative ${
+                    isActive && "link-isActive"
+                  } px-8 py-1 re`}
                 >
                   <Link
                     href={nav.path}
@@ -40,6 +39,7 @@ const LeftSidebar = () => {
                       width={24}
                       height={24}
                       alt={`${nav.name}_logo`}
+                      className={cn(" invert-[70%]", isActive && "invert-0")}
                     />
                     <h5>{nav.name}</h5>
                   </Link>

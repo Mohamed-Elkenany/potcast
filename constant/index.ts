@@ -20,3 +20,26 @@ export const navLinks = [
     icon: "/icons/profile.svg",
   },
 ];
+
+export const potcastInfo = [
+  {
+    image: "/potcast/GV Audio Experience.png",
+    name: "GV Audio Experience",
+    des: "MKBHD",
+  },
+  {
+    image: "/potcast/Impaulsive.png",
+    name: "Impaulsive",
+    des: "MKBHD",
+  },
+  {
+    image: "/potcast/Joe Rogan Experience.png",
+    name: "Joe Rogan Experience",
+    des: "MKBHD",
+  },
+  {
+    image: "/potcast/Waveform.png",
+    name: "Waveform",
+    des: "MKBHD",
+  },
+];
