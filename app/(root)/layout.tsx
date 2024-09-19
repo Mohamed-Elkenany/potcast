@@ -4,9 +4,11 @@ import RightSidebar from "../../components/RightSidebar";
 
 const layout = ({ children }) => {
   return (
-    <div>
+    <div className="min-h-screen grid grid-cols-12">
       <LeftSidebar />
+      <div className=" col-span-8">
       {children}
+      </div>
       <RightSidebar />
     </div>
   );
