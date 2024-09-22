@@ -43,3 +43,8 @@ export const potcastInfo = [
     des: "MKBHD",
   },
 ];
+
+
+export const lastPotcast = [
+  
+]
